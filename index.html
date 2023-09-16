@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rick and Morty</title>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/9e0a29e4d7.js"
       crossorigin="anonymous"
@@ -17,26 +18,45 @@
   </head>
 
   <body>
-    <header></header>
-
+    <header>
+      <img id="title-rm" src="https://imgs.search.brave.com/qD8t6E4UCa7Z77dN7m6LIuxmd1s9gmUURM3GePmKqcg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q2L1JpY2tfYW5k/X01vcnR5X3RpdGxl/X2NhcmRfKGNyb3Bw/ZWQpLnBuZw" alt="">
+    <!--  <img id="img-rm" src="https://imgs.search.brave.com/Gjx9BB76J3nD1LjhD2V4c79NPAMftKH8BBO75E-Dq9U/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9iaWxk/ZXIuZmVybnNlaHNl/cmllbi5kZS9nZngv/YnYvcmljay1hbmQt/bW9ydHktdy05NzAu/anBnLmpwZw" alt="">
+    --></header>
+<!---->
     <hr />
 
     <main>
-        <div class="btn-gender">
-            <button class="btn-todos" id="btn-todos">Todos</button>
-            <button class="btn-female" id="btn-female">Female</button>
-            <button class="btn-male" id="btn-male">Male</button>
-            <button class="btn-unk" id="btn-unk">Unknow</button>  
-        </div>
-      
+      <div class="btn-gender">
+        <button class="btn-todos" id="btn-todos">TODOS</button>
+        <button class="btn-female" id="btn-female">FEMALE</button>
+        <button class="btn-male" id="btn-male">MALE</button>
+        <button class="btn-unknown" id="btn-unknown">UNKNOWN</button>
+        <button class="btn-genderless" id="btn-genderless">GENDERLESS</button>
+      </div>
+
+      <div id="all-characters">
+    
+      </div>
 
       <input
-        id="text-character"
-        class="text-character"
+        id="txt-character"
+        class="finder-character"
         type="text"
-        placeholder="Ingrese un personaje"
+        placeholder="Enter a Character"
       />
+
+      
+
       <div class="container" id="container"></div>
+
+      <div class="button-inf">
+        <button class="btn-prim" id="btn-prim"><<</button>
+        <button class="btn-prev" id="btn-prev"><</button>
+        <button class="btn-next" id="btn-next">></button>
+        <button class="btn-ult" id="btn-ult">>></button>
+      </div>
+
+      
     </main>
 
     <footer>
@@ -52,7 +72,7 @@
           ><i class="fa-brands fa-github"></i
         ></a>
       </div>
-      <hr style="color: white; width: 30rem; justify-content: center" />
+      <hr style="color: white;" />
       <p>ROCIO MALDONADO</p>
       <p>ADA STUDENTS</p>
       <p>Copyright © Todos los derechos reservados</p>

@@ -1,115 +1,138 @@
 const container = document.getElementById("container");
-//const textCharacter = document.getElementById("text-character");
-//const gender = document.getElementById("gender");
-const bntTodos = document.getElementById("btn-todos");
-const bntFemale = document.getElementById("btn-female");
-const bntMale = document.getElementById("btn-male");
+const txtCharacter = document.getElementById("txt-character");
+const btnGenderless = document.getElementById("btn-genderless");
+const btnFemale = document.getElementById("btn-female");
+const btnMale = document.getElementById("btn-male");
+const btnUnknown = document.getElementById("btn-unknown");
+const btnTodos = document.getElementById("btn-todos");
+const btnPrev = document.getElementById("btn-prev");
+const btnNext = document.getElementById("btn-next");
+const btnUltima = document.getElementById("btn-ult");
+const btnPrimera = document.getElementById("btn-prim");
+const countCharacters = document.getElementById("all-characters");
 
-
-
+let page = 1;
+let totalpaginas = 0;
 const getCharacters = () => {
-  fetch("https://rickandmortyapi.com/api/character")
+  fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
     .then((res) => res.json())
-    .then((data) => renderCharacters(data))
+    .then((data) => {
+      renderCharacters(data)
+      totalpaginas = data.info.pages;
+    });
 };
 
 getCharacters();
 
 const renderCharacters = (data) => {
-  container.innerHTML= "";
-  console.log(data);
+  //console.log(data);
+ 
+ container.innerHTML= "";
+ countCharacters.innerHTML = `<p id= "all-characters">Cantidad de Personajes: ${data.info.count} </p>`
   data.results.forEach((character) => {
-    console.log(character);
-    container.innerHTML += 
-    `<div class="card" id="card" >
-    <img src="${character.image}" alt="">
+    // console.log(character);
+    container.innerHTML += `
+    <div class="card" id="card" >
+    <img id="card-img" src="${character.image}" alt="">
     <div class="description-card">
       <h2>${character.name}</h2>
     </div>
-    <button class="btn-vermas" id="btn-vermas" onclick=verDescripcion("${character.url}")> Ver mas..</button>
-</div>`;
+    <div>
+    <button class="btn-vermas" id="btn-vermas" onclick=verDescripcion("${character.url}")> See more..</button>
+    </div>
+    
+    
+</div>
+`;
   });
 };
 
+//INPUT
 
+//CANTIDAD DE PERSONAJES
+
+//BOTON VER MAS Y VOLVER
 const verDescripcion = (characterUrl) => {
-  container.innerHTML = ""
   fetch(characterUrl)
     .then((res) => res.json())
-    .then((character) => {
-      container.innerHTML =
-`<div class="card" id="card" >
-    <img src="${character.image}" alt="">
-    <div class="description-card">
-      <h2>${character.name}</h2>
-      <p>${character.gender}</p>
-      <p>${character.location.name}</p>
-      <p>${character.species}</p>
-      <p>${character.status}</p>
-      <p>${character.origin.name}</p>
-      <p>${character.episode}</p>
-      <p>${character.tipe}</p>
-    </div>
-    <button class="btn-prev" onclick="getCharacters()"> Volver</button>
-  </div>`
-    })
-};
-
-const filterCharacters = (filterParam, valueParam) =>{
-  fetch(`https://rickandmortyapi.com/api/character/?${filterParam}=${valueParam}`)
-    .then((res) => res.json())
-    .then((data) => renderCharacters(data))
-}
-
-
-bntFemale.addEventListener("click", () => 
-  filterCharacters("gender", "female")
-)
-/*
-const btnPrev = getElementById("btn-prev");
-btnPrev.addEventListener("click", volver);
-
-function volver(){
-  container.innerHTML += 
-  `<div class="card" id="card" >
-  <img src="${character.image}" alt="">
-  <div class="description-card">
-    <h2>${character.name}</h2>
+    .then((characterUrl) => {
+      container.innerHTML = `
+<div class="card-vermas" id="card-vermas">
+    <img src="${characterUrl.image}" alt="">
+    <div class="description-card-vermas">
+      <h2>${characterUrl.name}</h2>
+      <p>GENDER: ${characterUrl.gender}</p>
+      <p>LOCATION: ${characterUrl.location.name}</p>
+      <p>SPECIES: ${characterUrl.species}</p>
+      <p>STATUS: ${characterUrl.status}</p>
+      <p>ORIGIN: ${characterUrl.origin.name}</p>
+      <p>TYPE: ${characterUrl.tipe}</p>
+      <p>NUMBER OF EPISODES: ${characterUrl.episode.length}</p>
+    <button class="btn-volver" onclick="getCharacters(page)"> Volver</button>
   </div>
-  <button class="btn-vermas" onclick=verDescripcion("${character.url}")> Ver mas..</button>
-</div>`;
-}
-
-
-
-/* const filterGender = renderCharacters.filter (${character.gender} =>{
-     console.log(filterGender);
-    return ${character.gender} === "Male";
-  })
-
- 
-    
-
-
-
-/*
-let productosFiltrados = productos.filter(producto => {
-  // if(producto.nombre === "Smart TV Philips 6900" ){ esto es igual a
-  if (producto.nombre.includes("Smart TV Philips 6900")) {
-       return producto;
-   };
-})
-console.log(productosFiltrados);
-
-/*const verDescripcion = (detalles) => {
-  container.innerHTML = ""
-   `<div class="card" id="card">
-     <img src="${character.image}" alt="">
-     <div class="description-card">
-       <h2>${character.name}</h2>
-     </div> 
-    <button class="btn" onclick=verDescripcion> Ver mas</button>
-    </div>`;
+  </div>`;
+    });
 };
 
-*/
+//CANTIDAD DE PERSONAJES
+
+//FILTRO DE GENDER
+const filterCharacters = (filterParam, valueParam) => {
+  fetch(
+    `https://rickandmortyapi.com/api/character/?page=${page}&${filterParam}=${valueParam}`
+  )
+    .then((res) => res.json())
+    .then((data) => renderCharacters(data));
+};
+
+btnFemale.addEventListener("click", () => filterCharacters("gender", "female"));
+
+btnMale.addEventListener("click", () => filterCharacters("gender", "male"));
+
+btnUnknown.addEventListener("click", () =>
+  filterCharacters("gender", "unknown")
+);
+
+btnGenderless.addEventListener("click", () =>
+  filterCharacters("gender", "Genderless")
+);
+
+btnTodos.addEventListener("click", () => filterCharacters("gender", ""));
+
+//boton siguiente antes
+btnPrev.addEventListener("click", () => {
+  page -= 1;
+  if (page <= 1) {
+    btnPrev.setAttribute("disabled", true);
+  } else {
+    btnNext.removeAttribute("disablesd", true);
+  }
+  getCharacters(page);
+});
+
+btnNext.addEventListener("click", () => {
+  page += 1;
+  getCharacters(page);
+  if (page >= 1) {
+    btnPrev.removeAttribute("disabled", true);
+  }
+  if (page >= totalpaginas) {
+    btnNext.setAttribute("disabled", true);
+  }
+});
+
+btnPrimera.addEventListener("click", () => {
+  page = 1;
+  getCharacters(page);
+  if (page >= 1) {
+    btnNext.removeAttribute("disabled", true);
+  }
+});
+
+btnUltima.addEventListener("click", () => {
+  page = totalpaginas;
+  getCharacters(page);
+  if (page >= 1) {
+    btnPrev.removeAttribute("disabled", true);
+  }
+});
