@@ -28,17 +28,17 @@ const renderCharacters = (data) => {
   //console.log(data);
  
  container.innerHTML= "";
- countCharacters.innerHTML = `<p id= "all-characters">Cantidad de Personajes: ${data.info.count} </p>`
+ countCharacters.innerHTML = `<p id= "all-characters">Number of characters: ${data.info.count} </p>`
   data.results.forEach((character) => {
     // console.log(character);
     container.innerHTML += `
     <div class="card" id="card" >
     <img id="card-img" src="${character.image}" alt="">
-    <div class="description-card">
+    <div class="card-description">
       <h2>${character.name}</h2>
     </div>
-    <div>
-    <button class="btn-vermas" id="btn-vermas" onclick=verDescripcion("${character.url}")> See more..</button>
+    <div class="card-button">
+    <button class="btn-seeMore" id="btn-seeMore" onclick=verDescripcion("${character.url}")> See more..</button>
     </div>
     
     
@@ -57,9 +57,9 @@ const verDescripcion = (characterUrl) => {
     .then((res) => res.json())
     .then((characterUrl) => {
       container.innerHTML = `
-<div class="card-vermas" id="card-vermas">
+<div class="card-seeMore" id="card-seeMore">
     <img src="${characterUrl.image}" alt="">
-    <div class="description-card-vermas">
+    <div class="description-card-seeMore">
       <h2>${characterUrl.name}</h2>
       <p>GENDER: ${characterUrl.gender}</p>
       <p>LOCATION: ${characterUrl.location.name}</p>
@@ -68,7 +68,10 @@ const verDescripcion = (characterUrl) => {
       <p>ORIGIN: ${characterUrl.origin.name}</p>
       <p>TYPE: ${characterUrl.tipe}</p>
       <p>NUMBER OF EPISODES: ${characterUrl.episode.length}</p>
-    <button class="btn-volver" onclick="getCharacters(page)"> Volver</button>
+    <div class="card-btn-return">
+    <button class="btn-return" onclick="getCharacters(page)"> Return</button>
+    </div>
+      
   </div>
   </div>`;
     });
