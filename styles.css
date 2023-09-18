@@ -13,22 +13,59 @@ body{
 
 main{
     width: 100%;
-    background-image: url("https://imgs.search.brave.com/m_K1kEaYDjWlvaj5JjtlHSMQcGUacoljr2VN8BozgE0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvZmVhdHVy/ZWQvcmljay1hbmQt/bW9ydHktOHJjNTdk/NGRzNDRncXphdS5q/cGc");
+    background-image: url("https://wallpapers.com/images/featured/cool-rick-and-morty-pictures-2qy1xyshw0h9uxk4.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-header{
+/*header{
     width: 100%;
     height: 20rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.990);
-    /*background-image: url("https://imgs.search.brave.com/Gjx9BB76J3nD1LjhD2V4c79NPAMftKH8BBO75E-Dq9U/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9iaWxk/ZXIuZmVybnNlaHNl/cmllbi5kZS9nZngv/YnYvcmljay1hbmQt/bW9ydHktdy05NzAu/anBnLmpwZw");*/
+    background-image: url("https://imgs.search.brave.com/Gjx9BB76J3nD1LjhD2V4c79NPAMftKH8BBO75E-Dq9U/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9iaWxk/ZXIuZmVybnNlaHNl/cmllbi5kZS9nZngv/YnYvcmljay1hbmQt/bW9ydHktdy05NzAu/anBnLmpwZw");
+} */
 
-} 
-
-#title-rm{
- width: 40em;
- height:20em;
+.banner{
+    position:relative;
+    width: 100%;
+    height: 33rem;
+    background-color: gray;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all .1s ease-in-out;
+    background-image: url(https://imgs.search.brave.com/qD8t6E4UCa7Z77dN7m6LIuxmd1s9gmUURM3GePmKqcg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q2L1JpY2tfYW5k/X01vcnR5X3RpdGxl/X2NhcmRfKGNyb3Bw/ZWQpLnBuZw);
+    animation: banner 15s infinite linear;
 }
+
+@keyframes banner {
+    0%{
+        background-image: url(https://imgs.search.brave.com/qD8t6E4UCa7Z77dN7m6LIuxmd1s9gmUURM3GePmKqcg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q2L1JpY2tfYW5k/X01vcnR5X3RpdGxl/X2NhcmRfKGNyb3Bw/ZWQpLnBuZw);
+    }
+    25%{
+        background-image: url(https://imgs.search.brave.com/qD8t6E4UCa7Z77dN7m6LIuxmd1s9gmUURM3GePmKqcg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q2L1JpY2tfYW5k/X01vcnR5X3RpdGxl/X2NhcmRfKGNyb3Bw/ZWQpLnBuZw);
+    }
+    26%{
+        background-image: url(https://www.justwatch.com/images/backdrop/247575832/s1440/rick-y-morty/rick-y-morty);
+    }
+    50%{
+        background-image: url(https://www.justwatch.com/images/backdrop/247575832/s1440/rick-y-morty/rick-y-morty);
+    }
+    51%{
+        background-image: url(https://vod.roams.es/images/post/es_ES_vod/series-rick-y-morty.jpg);
+    }
+    75%{
+        background-image: url(https://vod.roams.es/images/post/es_ES_vod/series-rick-y-morty.jpg);
+    }
+    76%{
+        background-image: url(https://www.formulatv.com/images/series/1000/1524-f.jpg);
+    }
+    100%{
+        background-image: url(https://www.formulatv.com/images/series/1000/1524-f.jpg);
+    }
+}
+
 
 .btn-gender{
     text-align: center;
@@ -69,13 +106,29 @@ button:hover {
     text-align: center;
 }
 
+.intro p{
+    font-family: 'Creepster', cursive;
+    letter-spacing: 0.1em;
+    background-color: #040535;
+    padding: 1rem;
+    border-radius: 5%;
+    margin: 3em;
+    text-align: center;
+}
+
+#container-all-characters{
+    padding: 2rem;
+}
+
 #all-characters{
     font-family: 'Creepster', cursive;
     color: white;
     letter-spacing: 0.2rem;
     text-align: center;
-    padding: 1em;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    background: #040535;
+    padding: 0.3em;
+   
 }
 
 .container{
@@ -147,29 +200,37 @@ button:hover {
 
 footer{
     width: 100%;
-    height: 12em;
+    height: 20em;
     background: black;
     text-align: center;
     color: white;
     font-family: sans-serif;
   }
 
-footer h4, .links{
+iframe{
     padding: 1em;
 }
 
+.links{
+    justify-content: center;
+    text-align: center;
+}
 .links a{
     color: aquamarine;
+    text-align: center;
+    justify-content: center;
+    padding: 0.5em;
 }
 
-.footer-name{
-    padding: 1em;
+.footer .links{
+    justify-content: center;
+    text-align: center;
 }
 
   @media (max-width: 420px){
-    #title-rm{
+    .banner{
         width: 100%;
-        height: 100%;
+        height: 12rem;
         object-fit: contain;
 }
     

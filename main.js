@@ -9,7 +9,7 @@ const btnPrev = document.getElementById("btn-prev");
 const btnNext = document.getElementById("btn-next");
 const btnUltima = document.getElementById("btn-ult");
 const btnPrimera = document.getElementById("btn-prim");
-const countCharacters = document.getElementById("all-characters");
+const countCharacters = document.getElementById("container-all-characters");
 
 let page = 1;
 let totalpaginas = 0;
@@ -107,8 +107,9 @@ btnPrev.addEventListener("click", () => {
   page -= 1;
   if (page <= 1) {
     btnPrev.setAttribute("disabled", true);
+    btnPrimera.setAttribute("disabled", true);
   } else {
-    btnNext.removeAttribute("disablesd", true);
+    btnNext.removeAttribute("disabled", true);
   }
   getCharacters(page);
 });
@@ -116,8 +117,9 @@ btnPrev.addEventListener("click", () => {
 btnNext.addEventListener("click", () => {
   page += 1;
   getCharacters(page);
-  if (page >= 1) {
+  if (page > 1) {
     btnPrev.removeAttribute("disabled", true);
+    btnPrimera.removeAttribute("disabled", true);
   }
   if (page >= totalpaginas) {
     btnNext.setAttribute("disabled", true);
@@ -129,6 +131,7 @@ btnPrimera.addEventListener("click", () => {
   getCharacters(page);
   if (page >= 1) {
     btnNext.removeAttribute("disabled", true);
+    btnUltima.removeAttribute("disabled", true);
   }
 });
 
@@ -137,5 +140,10 @@ btnUltima.addEventListener("click", () => {
   getCharacters(page);
   if (page >= 1) {
     btnPrev.removeAttribute("disabled", true);
+    btnPrimera.removeAttribute("disabled", true);
+  }
+  if (page >= totalpaginas){
+    btnUltima.setAttribute("disabled", true);
+    btnNext.setAttribute("disabled", true);
   }
 });
