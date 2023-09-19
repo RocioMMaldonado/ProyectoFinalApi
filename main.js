@@ -25,12 +25,9 @@ const getCharacters = () => {
 getCharacters();
 
 const renderCharacters = (data) => {
-  //console.log(data);
- 
  container.innerHTML= "";
  countCharacters.innerHTML = `<p id= "all-characters">Number of characters: ${data.info.count} </p>`
   data.results.forEach((character) => {
-    // console.log(character);
     container.innerHTML += `
     <div class="card" id="card" >
     <img id="card-img" src="${character.image}" alt="">
@@ -40,18 +37,11 @@ const renderCharacters = (data) => {
     <div class="card-button">
     <button class="btn-seeMore" id="btn-seeMore" onclick=verDescripcion("${character.url}")> See more..</button>
     </div>
-    
-    
 </div>
 `;
   });
 };
 
-//INPUT
-
-//CANTIDAD DE PERSONAJES
-
-//BOTON VER MAS Y VOLVER
 const verDescripcion = (characterUrl) => {
   fetch(characterUrl)
     .then((res) => res.json())
@@ -77,9 +67,6 @@ const verDescripcion = (characterUrl) => {
     });
 };
 
-//CANTIDAD DE PERSONAJES
-
-//FILTRO DE GENDER
 const filterCharacters = (filterParam, valueParam) => {
   fetch(
     `https://rickandmortyapi.com/api/character/?page=${page}&${filterParam}=${valueParam}`
@@ -102,7 +89,6 @@ btnGenderless.addEventListener("click", () =>
 
 btnTodos.addEventListener("click", () => filterCharacters("gender", ""));
 
-//boton siguiente antes
 btnPrev.addEventListener("click", () => {
   page -= 1;
   if (page <= 1) {
